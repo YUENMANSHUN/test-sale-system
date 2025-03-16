@@ -3,19 +3,16 @@ package com.test.sale_system.model;
 import java.util.List;
 
 public class Receipt {
+    private List<BasketItem> items; // 購物籃中的商品
+    private double total;          // 總價
+    private double discount;       // 優惠金額
+    private double finalTotal;     // 最終總價
 
-    //items：購買的商品列表及其數量。
-    //totalPrice：總價。
-    //discountApplied：應用的優惠。
-
-    private List<BasketItem> items;
-    private double totalPrice;
-    private String discountApplied;
-
-    public Receipt(List<BasketItem> items, double totalPrice, String discountApplied) {
+    public Receipt(List<BasketItem> items, double total, double discount, double finalTotal) {
         this.items = items;
-        this.totalPrice = totalPrice;
-        this.discountApplied = discountApplied;
+        this.total = total;
+        this.discount = discount;
+        this.finalTotal = finalTotal;
     }
 
     public List<BasketItem> getItems() {
@@ -26,19 +23,27 @@ public class Receipt {
         this.items = items;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getTotal() {
+        return total;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public String getDiscountApplied() {
-        return discountApplied;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setDiscountApplied(String discountApplied) {
-        this.discountApplied = discountApplied;
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public double getFinalTotal() {
+        return finalTotal;
+    }
+
+    public void setFinalTotal(double finalTotal) {
+        this.finalTotal = finalTotal;
     }
 }

@@ -1,52 +1,62 @@
 package com.test.sale_system.service;
 
 import com.test.sale_system.model.*;
+import com.test.sale_system.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class BasketService {
-    private List<BasketItem> basket = Collections.synchronizedList(new ArrayList<>());
+    private List<BasketItem> basketItems = new ArrayList<>(); // 購物籃
+    @Autowired
+    private ProductRepository productRepository;
 
-    public void addToBasket(Product product, int quantity) {
-        basket.add(new BasketItem(product, quantity));
-    }
-
-    public void removeFromBasket(Long productId) {
-        basket.removeIf(item -> item.getProduct().getId().equals(productId));
-    }
-
-    public List<BasketItem> getBasketItems() {
-        return basket;
-    }
-
- /*   public Receipt calculateReceipt(List<BasketItem> basketItems) {
-        double total = 0; // 總價
-        double discount = 0; // 優惠金額
-
+    // 添加商品到購物籃
+    public void addProductToBasket(Long productId, int quantity) {
         for (BasketItem item : basketItems) {
-            Product product = item.getProduct();
-            double itemTotal = product.getPrice() * item.getQuantity();
-            total += itemTotal;
-
-            // 檢查是否有優惠條件和優惠內容
-            DiscountCondition condition = product.getDiscountCondition();
-            DiscountOffer offer = product.getDiscountOffer();
-
-            if (condition != null && offer != null) {
-                if (condition.getType() == DiscountCondition.DiscountConditionType.QUANTITY_THRESHOLD &&
-                        item.getQuantity() >= condition.getRequiredValue() &&
-                        offer.getType() == DiscountOffer.DiscountOfferType.X_QUANTITY_HAVE_PERCENTAGE) {
-                    // 購買滿 X 件享受一定百分比折扣
-                    discount += itemTotal * (offer.getDiscountValue() / 100);
-                }
+            if (item.getProduct().getId().equals(productId)) {
+                item.setQuantity(item.getQuantity() + quantity);
+                return;
             }
         }
+        Optional<Product> productOptional = productRepository.findById(productId);
+        if (!productOptional.isPresent()) {
+            throw new NoSuchElementException("Product not found for ID: " + productId);
+        }
+        Product product = productOptional.get();
+        basketItems.add(new BasketItem(product, quantity));
+    }
 
-        double finalTotal = total - discount;
-        return new Receipt(basketItems, total, discount, finalTotal);
-    }*/
+    //reduce quantity of product in basket and remove if quantity is 0
+    public void reduceProductQuantity(Long productId, int quantity) {
+        for (BasketItem item : basketItems) {
+            if (item.getProduct().getId().equals(productId)) {
+                item.setQuantity(item.getQuantity() - quantity);
+                if(item.getQuantity() == 0){
+                    basketItems.remove(item);
+                }
+                return;
+            }
+        }
+    }
+
+    // 從購物籃移除商品
+    public void removeProductFromBasket(Long productId) {
+        basketItems.removeIf(item -> item.getProduct().getId().equals(productId));
+    }
+
+    // 獲取購物籃中的所有商品
+    public List<BasketItem> getBasketItems() {
+        return basketItems;
+    }
+
+    // 清空購物籃
+    public void clearBasket() {
+        basketItems.clear();
+    }
 }

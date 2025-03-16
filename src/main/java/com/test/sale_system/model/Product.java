@@ -26,7 +26,7 @@ public class Product {
     public enum DiscountConditionType {
         NULL, // 無
         QUANTITY_THRESHOLD, // 購買滿 X 個數量
-        AMOUNT_THRESHOLD    // 購買滿 X 金額
+//        AMOUNT_THRESHOLD    // 購買滿 X 金額
     }
 
     public enum DiscountOfferType {

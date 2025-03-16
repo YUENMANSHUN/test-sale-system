@@ -21,7 +21,7 @@ public class ProductServiceTest {
     public void testCreateProduct() {
         // 創建商品 1
         Product product1 = new Product();
-        product1.setName("Laptop");
+        product1.setName("iPhone");
         product1.setPrice(1200.50);
         product1.setDiscountConditionType(Product.DiscountConditionType.QUANTITY_THRESHOLD);
         product1.setDiscountConditionValue(3); // 購買滿 3 件
@@ -32,15 +32,15 @@ public class ProductServiceTest {
 
         // 創建商品 2
         Product product2 = new Product();
-        product2.setName("Smartphone");
+        product2.setName("SmartSwitch");
         product2.setPrice(800.00);
         product2.setDiscountConditionType(Product.DiscountConditionType.NULL);
         product2.setDiscountOfferType(Product.DiscountOfferType.NULL);
         productRepository.save(product2);
 
         //use productRepository findByName to get product1 and product2
-        Product product1FromDB = productRepository.findByName("Laptop");
-        Product product2FromDB = productRepository.findByName("Smartphone");
+        Product product1FromDB = productRepository.findByName("iPhone");
+        Product product2FromDB = productRepository.findByName("SmartSwitch");
         assertEquals(1200.50, product1FromDB.getPrice());
         assertEquals(800.00, product2FromDB.getPrice());
     }
