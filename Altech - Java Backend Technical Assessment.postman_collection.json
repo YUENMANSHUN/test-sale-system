@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "8cce41d5-e9e2-421b-b00d-3f5b39ef4ef8",
+		"name": "Altech - Java Backend Technical Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12445076"
+	},
+	"item": [
+		{
+			"name": "Add product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"apple\",\r\n    \"price\": 1000,\r\n    \"discountConditionType\": null,\r\n    \"discountConditionValue\": 0,\r\n    \"discountOfferType\": null,\r\n    \"discountOfferQuantity\": 0,\r\n    \"discountOfferValue\": 0.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/admin/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"admin",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add product to basket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/basket/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"basket",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Del product from basket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/basket/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"basket",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reduce product in basket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/basket/reduce",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"basket",
+						"reduce"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get basket product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/basket/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"basket",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get basket receipt",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/basket/get_receipt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"basket",
+						"get_receipt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Del product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"apple\",\r\n    \"price\": 1000,\r\n    \"discountConditionType\": null,\r\n    \"discountConditionValue\": 0,\r\n    \"discountOfferType\": null,\r\n    \"discountOfferQuantity\": 0,\r\n    \"discountOfferValue\": 0.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/admin/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"admin",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/myapp/api/admin/products/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"myapp",
+						"api",
+						"admin",
+						"products",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
