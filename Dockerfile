@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/sale_system-0.0.1.jar app.jar
 
 # 暴露應用程序的默認端口
-EXPOSE 8080
+EXPOSE 8081
 
 # 啟動 Spring Boot 應用
 CMD ["java", "-jar", "app.jar"]
